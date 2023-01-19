@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import OrganizationsList from '../components/OrganizationsList'
-import OrganizationItem from '../components/OrganizationItem'
-import PurchasesList from '../components/PurchasesList'
-import PurchaseItem from "../components/PurchaseItem";
+import OrganizationsList from '@/components/OrganizationsList.vue'
+import OrganizationItem from '@/components/OrganizationItem.vue'
+import PurchasesList from '@/components/PurchasesList.vue'
+import PurchaseItem from "@/components/PurchaseItem.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

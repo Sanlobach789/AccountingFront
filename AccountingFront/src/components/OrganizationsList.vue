@@ -2,7 +2,7 @@
   <div class="organization-list mb-5">
     <h4>Список организаций</h4>
     <ul class="list-group">
-      <li v-for="item in orgList.orgList" :key="item.id" class="list-group-item">
+      <li v-for="item in organizationList.results" :key="item.id" class="list-group-item">
         <router-link
             :to="{name: 'organizationItem', params: {id: item.id}}"
         >
@@ -14,23 +14,24 @@
 </template>
 
 <script setup>
-import {onBeforeMount} from "vue";
-import axios from "axios";
-import {useBaseVarStore} from "@/store/baseVar";
-import {useOrganizationsStore} from "@/store/storeOrganizations";
+import {onMounted, ref} from "vue";
 
-const baseVar = useBaseVarStore()
-const orgList = useOrganizationsStore()
+const baseUrl = "http://127.0.0.1:8000"
+const organizationList = ref([])
 
-const getOrganizationsList = () => {
-  axios.get(baseVar.url + '/organizations').then((response) => {
-    orgList.updateOrganizationList(response.data.results)
-  }).catch((reason) => {
-    console.log(reason)
-  })
+async function fetchData() {
+  organizationList.value = []
+  const res = await fetch(
+      `${baseUrl}/organizations/`
+  )
+  organizationList.value = await res.json()
+  console.log(organizationList.value)
 }
 
-onBeforeMount(() => getOrganizationsList())
+
+onMounted(() => {
+  fetchData()
+})
 </script>
 
 <style scoped>

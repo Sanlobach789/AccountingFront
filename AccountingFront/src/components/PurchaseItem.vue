@@ -40,14 +40,7 @@
 </template>
 
 <script setup>
-import {usePurchasesStore} from "@/store/storePurchases";
-import {onBeforeMount} from "vue";
 
-const purchasesStore = usePurchasesStore()
-
-onBeforeMount(() => {
-
-})
 </script>
 
 <style scoped>

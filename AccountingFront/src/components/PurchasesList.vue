@@ -31,25 +31,6 @@
 </template>
 
 <script setup>
-import {onBeforeMount} from "vue";
-import {usePurchasesStore} from "@/store/storePurchases";
-import {useBaseVarStore} from "@/store/baseVar";
-import axios from "axios";
-
-// const purchasesList = reactive([])
-const purchasesStore = usePurchasesStore()
-
-const baseVarStore = useBaseVarStore()
-
-
-onBeforeMount(() => {
-  axios.get(baseVarStore.url + '/purchases/').then((response) => {
-    console.log(response.data.results);
-    purchasesStore.updatePurchasesList(response.data.results)
-  }).catch((reason) => {
-    console.log(reason)
-  })
-})
 
 </script>
 

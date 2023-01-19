@@ -26,37 +26,10 @@
       </div>
     </div>
   </div>
-  <ContactsList :contactsList="orgItem.contacts_list"/>
+  <ContactsList />
 </template>
 
 <script setup>
-import {useRoute} from "vue-router"
-import {useBaseVarStore} from "@/store/baseVar";
-import {onBeforeMount, reactive, ref} from "vue";
-import axios from "axios";
-import ContactsList from "@/components/ContactsList";
-
-const baseVar = useBaseVarStore()
-const orgItem = ref({
-  id: 0,
-  title: '',
-  balance: 0,
-  contacts_list: reactive([])
-})
-const route = useRoute()
-
-
-const getOrganization = (id) => {
-  axios.get(baseVar.url + '/organizations/' + id).then((response) => {
-    const contacts_list = response.data.contacts_list
-    orgItem.value = response.data;
-    orgItem.value.contacts_list = contacts_list
-  }).catch((reason) => {
-    console.log(reason)
-  })
-}
-
-onBeforeMount(() => getOrganization(route.params.id))
 </script>
 
 <style scoped>
