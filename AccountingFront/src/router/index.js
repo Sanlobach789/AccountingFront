@@ -1,21 +1,25 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import OrganizationsList from '@/components/OrganizationsList.vue'
+import {createRouter, createWebHistory} from 'vue-router'
+
+import HomeView from '@/views/HomeView.vue'
+import OrganizationsView from '@/views/OrganizationsView.vue'
+import PurchasesView from '@/views/PurchasesView.vue'
+import WarehousesView from '@/views/WarehousesView.vue'
+
 import OrganizationItem from '@/components/OrganizationItem.vue'
-import PurchasesList from '@/components/PurchasesList.vue'
-import PurchaseItem from "@/components/PurchaseItem.vue";
+import PurchaseItem from '@/components/PurchaseItem.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
+    history: createWebHistory(import.meta.env.BASE_URL),
+    routes: [
+        {
             path: '/',
             name: 'HomePage',
-            component: OrganizationsList
+            component: HomeView
         },
         {
             path: '/organizations',
-            name: 'organizationList',
-            component: OrganizationsList
+            name: 'organizationView',
+            component: OrganizationsView
         },
         {
             path: '/organizations/:id',
@@ -24,15 +28,20 @@ const router = createRouter({
         },
         {
             path: '/purchases',
-            name: 'purchasesList',
-            component: PurchasesList
+            name: 'purchasesView',
+            component: PurchasesView
         },
         {
             path: '/purchases/:id',
             name: 'purchaseItem',
             component: PurchaseItem
-        }
-  ]
+        },
+        {
+            path: '/warehouses',
+            name: 'WarehousesView',
+            component: WarehousesView
+        },
+    ]
 })
 
 export default router

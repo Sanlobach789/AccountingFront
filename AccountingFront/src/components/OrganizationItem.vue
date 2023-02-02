@@ -26,7 +26,7 @@
       </div>
     </div>
   </div>
-  <ContactsList />
+
 </template>
 
 <script setup>

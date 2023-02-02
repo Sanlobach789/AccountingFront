@@ -12,7 +12,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr v-for="purchase in purchasesStore.purchases_list" :key="purchase.id">
+      <tr v-for="purchase in purchasesList.results" :key="purchase.id">
         <th scope="row">
           <router-link
               :to="{name: 'purchaseItem', params: {id: purchase.id}}"
@@ -23,7 +23,7 @@
         <td>{{ purchase.date }}</td>
         <td>{{ purchase.contractor }}</td>
         <td>{{ purchase.status }}</td>
-        <td>{{ purchasesStore.getAmountPrice(purchase.id) }}</td>
+        <td>{{ purchase.status }}</td>
       </tr>
       </tbody>
     </table>
@@ -31,7 +31,23 @@
 </template>
 
 <script setup>
+import {onMounted, ref} from "vue";
 
+const baseUrl = "http://127.0.0.1:8000"
+const purchasesList = ref([])
+
+async function fetchData() {
+  purchasesList.value = []
+  const res = await fetch(
+      `${baseUrl}/purchases/`
+  )
+  purchasesList.value = await res.json()
+  console.log(purchasesList.value)
+}
+
+onMounted(() => {
+fetchData()
+})
 </script>
 
 <style scoped>
