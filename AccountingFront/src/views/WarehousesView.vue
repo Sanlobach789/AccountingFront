@@ -8,7 +8,7 @@
           {{ whouse.title }}
         </button>
       </p>
-      <div class="collapse" :id="'targetBlock'+whouse.id">
+      <div class="collapse mb-3" :id="'targetBlock'+whouse.id">
         <div class="card card-body">
           {{ whouse.address }}
         </div>
@@ -29,7 +29,6 @@ async function fetchData() {
       `${baseUrl}/warehouses/`
   )
   warehousesList.value = await res.json()
-  console.log(warehousesList.value)
 }
 
 onMounted(() => {

@@ -42,7 +42,6 @@ async function fetchData() {
       `${baseUrl}/purchases/`
   )
   purchasesList.value = await res.json()
-  console.log(purchasesList.value)
 }
 
 onMounted(() => {

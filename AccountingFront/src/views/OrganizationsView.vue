@@ -25,7 +25,6 @@ async function fetchData() {
       `${baseUrl}/organizations/`
   )
   organizationList.value = await res.json()
-  console.log(organizationList.value)
 }
 
 onMounted(() => {
